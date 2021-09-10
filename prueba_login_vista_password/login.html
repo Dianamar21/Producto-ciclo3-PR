@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="css/stilos.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi primer login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container">
+        <!--MENU NAVEGACION CON REGISTRO Y ENTRADA-->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Registrate</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Ingresa</button>
+            </li>
+        </ul>
+        <!--DENTRO DE ESTE CONETENEDOR DE TABS VAN LOS FORMULARIOS-->
+        <div class="tab-content" id="myTabContent ">
+            <!--ESTE DIV IDENTIFICA EL ID PARA EL TAB-->
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">.
+
+                <div class="row espacio2">
+                    <!--IMAGEN DE PANDA-->
+                    <div class="col-4">
+                        <img width="300px" height="auto" src="img/panda_1.png" alt="">
+                    </div>
+
+                    <div class="col-5">
+                        <!--FORMULARIO REGISTRO-->
+                        <form action="" method="POST" name="formularioRegistro" class="form-control">
+                            <div class="cart-title mb-3 ">
+                                <h1> Registrate en PanDaza </h1>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <input type="email" class="form-control" name="correoRegistro" id="correoRegistro" placeholder="Ingresa tu Correo" required>
+                                <span class="input-group-text" id="basic-addon1"><img src="img/corr.png" width="40px" alt=""></span>
+                            </div>
+                            <div class="input-group mb-3">
+                                <input type="password" class="form-control" name="passwordRegistro_1" id="passwordRegistro_1" placeholder="Ingresa una Contraseña" required>
+                                <span class="input-group-text" id="basic-addon1"><img src="img/pass.png" width="40px" alt=""></span>
+                            </div>
+                            <div class="input-group mb-3">
+                                <input type="password" class="form-control" name="passwordRegistro_2" id="passwordRegistro_2" placeholder="Confirma tu Contraseña" required>
+                                <span class="input-group-text" id="basic-addon1"><img src="img/pass.png" width="40px"></span>
+                            </div>
+                            <div class="form-check form-switch mb-3">
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" onclick="verClave()"> <b>Ver Contraseña</b>
+                            </div>
+
+                            <div class="mb-3">
+                                <button class="btn btn-primary form-control" type="button"><b>Registrate</b></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+                <div class="row espacio2">
+
+                    <div class="col-5">
+                        <!--FORMULARIO INGRESO-->
+                        <form action="datosFormulario.js" method="POST" name="formularioLogin" class="form-control">
+                            <div class="cart-title mb-3">
+                                <h1> Ingresa en PanDaza </h1>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <input type="email" class="form-control" name="correoLogin" id="correoLogin" placeholder="Ingresa tu Correo" required>
+                                <span class="input-group-text" id="basic-addon1"><img src="img/corr.png" width="40px" alt=""></span>
+                            </div>
+                            <div class="input-group mb-3">
+                                <input type="password" class="form-control" name="passwordLogin" id="passwordLogin" placeholder="Ingresa tu Clave" required>
+                                <span class="input-group-text" id="basic-addon1"><img src="img/pass.png" width="40px" alt=""></span>
+                            </div>
+
+                            <div class="form-check form-switch mb-3">
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked_2" onclick="verClave()"> <b>Ver Contraseña</b>
+                            </div>
+
+                            <div class="mb-3">
+                                <button class="btn btn-primary form-control" type="button" value="Login" onclick="validarLogin()"> <b>LOGIN</b> </button>
+                            </div>
+                        </form>
+                    </div>
+                    <!--IMAGEN DE PANDA-->
+                    <div class="img col-4">
+                        <img width="300px" height="auto" src="img/panda_1.png" alt="">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+<script text="text/javascript" src="js/verClave.js"></script>
+<script text="text/javascript" src="js/datosFormulario.js"></script>
+<!--ENLACE BOOTSTRAP PERMITE QUE EL TABS FUNCIONE -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</html>
