@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel=
+    "stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin=
+    "anonymous">
+
+</head>
+<body>
+    
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <div class="container-fluid bg-body">
+      <a class="navbar-brand" href="www.pandaza.com/inicio"><img src="panda_logo.png" width="100px" height="100px"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Acerca de
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">DianiMar</a></li>
+              <li><a class="dropdown-item" href="#">Lau Bosso</a></li>              
+              <li><a class="dropdown-item" href="#">YeielBarbaro</a></li>
+              <li><a class="dropdown-item" href="#">Liopold</a></li>
+              <li><hr class="dropdown-divider"></li>
+            </ul>
+          </li>
+          <!--li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+          </li-->
+        </ul>
+        <!--form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form-->
+      </div>
+    </div>
+  </nav>
+      
+      <!--a href="#" tabindex="-1" class="btn btn-warning disabled placeholder col-12 placeholder-xs" aria-hidden="true"></a-->
+      <div id="Menu de pagina"></div>
+        <div class="container clearfix"></div>
+        <div id="submenu_A" data-loop-senas="1" class="menu-title switch_senas bg-warning"> 
+          <h4 class ="text-warning">ensayo</h4>   
+          <!--span class= "bg-danger">fdsfdssdfsdf</span-->
+        </div>
+
+
+    <div class="container mb-md-4" >
+        <header id = 'header' class = 'modal-fullscreen'>
+          <h3>Agregar comentario</h3>
+            <!--div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+              </div-->
+              <div class="mb-md-4 col-6">
+                <label for="cuadroTexto" class="form-label"></label>
+                <textarea class="form-control mb-md-4" id="cuadroTexto" rows="4" placeholder="Escriba sus comentarios aquí" readonly></textarea>
+
+                <button type ="button" onclick="mostrarEnPantalla2()" class = 'btn btn-outline-primary'>Mostrar en pantalla</button>
+                <button type ="button" onclick="activarCampo()" class = 'btn btn-outline-success'id = "cuadroTexto">Activar campo</button>
+                <button type ="button" onclick="bloquearCampo()" class = 'btn btn-outline-danger'>Bloquear campo</button>
+
+              </div>
+              <!--div id = 'salida' class = 'container mb-md-4'></div-->
+                <div class="card text-white bg-black mb-3" style="width: 18rem;">
+                    <div class="card-body" >
+                      <h6 class="card-title" id="usuario">Diana dijo..</h6>
+                      <!--h6 class="card-subtitle mb-2 text-muted">Le gusto la receta</h6-->
+                      <p class="card-text" id= "salida" ></p>
+                      <a href="www.perfil de diana.com" class="card-link text-white">Visita su perfil</a>
+                      <!--a href="#" class="card-link">Another link</a-->
+                    </div>
+                </div>
+                <!--label> <h4>Presione los botones para habilitar/desabilitar</h4>Nombre: </label-->
+                    <!--input id = 'nombre' type="text" style="width:300px" placeholder="Ingrese su nombre completo" readonly-->
+                    <!--readonly bloquea el campo-->
+                    
+              
+
+
+        </header>
+        <!--div id = 'logo'>
+            <center>
+                <a href="www.pandaza.com.co" alt = logo pandaza >
+                <img src = 'Logo.png' class="img-fluid" alt="...">
+                </a>
+            </center>
+        </div-->
+    </div>
+    
+    
+    <!--Javascript-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity=
+    "sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin=
+    "anonymous"></script>
+    <script src = 'comentariosReceta.js'></script>
+
+</body>
+</html>
