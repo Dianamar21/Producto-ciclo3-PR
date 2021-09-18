@@ -1,0 +1,46 @@
+[
+    {
+        "id": "2e41fee0-1837-11ec-9621-0242ac130002",
+        "createdUser": "5c7e06e6-1837-11ec-9621-0242ac130002",
+        "title": "Pastas de la abuela",
+        "steps": "Caliente agua y agregue las pastas y espere hasta que esten blandas.",
+        "images": [
+            "https://dummyimage.com/250/ffffff/000000",
+            "https://dummyimage.com/skyscraper/f0f/f"
+        ],
+        "ingridients": [
+            {
+                "id": "8428391e-1837-11ec-9621-0242ac130002",
+                "name": "Agua",
+                "quantity": "1 lt"
+            },
+            {
+                "id": "9d0f4a62-1837-11ec-9621-0242ac130002",
+                "name": "Pastas",
+                "quantity": "1 paquete"
+            }
+        ]
+    },
+    {
+        "id": "2e41fee0-1837-11ec-9621-0242ac130002",
+        "createdUser": "5c7e06e6-1837-11ec-9621-0242ac130002",
+        "title": "Pastas de la abuela",
+        "steps": "Caliente agua y agregue las pastas y espere hasta que esten blandas.",
+        "images": [
+            "https://dummyimage.com/250/ffffff/000000",
+            "https://dummyimage.com/skyscraper/f0f/f"
+        ],
+        "ingridients": [
+            {
+                "id": "8428391e-1837-11ec-9621-0242ac130002",
+                "name": "Agua",
+                "quantity": "1 lt"
+            },
+            {
+                "id": "9d0f4a62-1837-11ec-9621-0242ac130002",
+                "name": "Pastas",
+                "quantity": "1 paquete"
+            }
+        ]
+    }
+]
