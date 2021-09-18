@@ -1,12 +1,15 @@
 <template>
+  <b-container fluid>
+    <!-- If using vue-router -->
+    <router-view></router-view>
+  </b-container>
 </template>
 
 <script>
 export default {
-  name: 'App',
-  components: {
-  }
-}
+  name: "App",
+  components: {},
+};
 </script>
 
 <style>
