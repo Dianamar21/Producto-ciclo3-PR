@@ -8,6 +8,7 @@
       max-width="1400"
       src="../assets/banner_2.jpg"
     ></v-img>
+      <!--ANTES:src="https://picsum.photos/id/11/500/300"-->
       <!--ANTES: lazy-src="https://picsum.photos/id/11/10/6"-->
       
       <br>
