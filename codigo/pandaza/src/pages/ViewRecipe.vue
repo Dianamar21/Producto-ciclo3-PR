@@ -2,6 +2,7 @@
   <div>
     <h1>Ver Receta</h1>
     <br>
+    <h5>Tabla de datos de la receta</h5>
   <div>
 
     <v-simple-table >
