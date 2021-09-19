@@ -1,63 +1,62 @@
 <template>
   <div>
-    <h1>Editar Receta</h1>
-    <b-form>
-      <b-form-group
-        id="form-group-title"
-        label="Titulo de la receta:"
-        label-for="form-input-title"
-      >
-        <b-form-input
-          id="form-input-title"
-          v-model="text"
-          type="text"
-          placeholder="arepas de maiz"
-        />
-      </b-form-group>
-
-      <b-form-group
-        id="form-group-images"
-        label="Images:"
-        v-for="(recipeImage, counter) in recipe.images"
-        v-bind:key="counter"
-      >
-        <b-img :src="recipeImage" fluid alt="Responsive image"></b-img>
-      </b-form-group>
-
-      <b-form-group id="form-group-ingridients" label="Ingredientes:">
-      </b-form-group>
-
-      <b-form-group
-        id="form-group-steps"
-        label="Preparación:"
-        label-for="form-input-steps"
-      >
-        <b-form-textarea
-          id="form-input-steps"
-          v-model="text"
-          type="text"
-          placeholder="Maiz, agua, sal, mezclar"
-          rows="3"
-          max-rows="6"
-        />
-      </b-form-group>
-
-      <CommentComponent />
-
-      <b-button type="submit" variant="primary">Guardar</b-button>
-      <b-button type="reset" variant="danger">Cancelar</b-button>
-    </b-form>
+    <div class="transition-swing text-h3 mb--1">Editar Receta</div>
+    <v-form>
+      <v-container>
+        <v-row>
+          <v-col cols="12">
+            <v-text-field
+              outlined
+              label="Titulo Receta"
+              placeholder="Arroz con pollo"
+            />
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12">
+            <v-carousel>
+              <v-carousel-item
+                v-for="(item, index) in recipe.images"
+                :key="index"
+                :src="item"
+                reverse-transition="fade-transition"
+                transition="fade-transition"
+              />
+            </v-carousel>
+          </v-col>
+        </v-row>
+        <v-row v-for="ingridient in recipe.ingridients" :key="ingridient.id">
+          <v-col cols="6">
+            <v-subheader v-text="ingridient.name" />
+          </v-col>
+          <v-col cols="6">
+            <v-text-field
+              label="Cantidad"
+              v-text="ingridient.quantity"
+              suffix="lbs"
+            ></v-text-field>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12">
+            <v-textarea
+              outlined
+              name="input-7-4"
+              label="Descripcion"
+              hint="Calentar sarten, agregar pollo y arroz"
+            />
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-form>
   </div>
 </template>
 
 <script>
 import RecepiesData from "../dummy/recipes.json";
-import CommentComponent from "../components/AddComment.vue";
 
 export default {
-  components: {
-    CommentComponent,
-  },
+  components: {},
   data() {
     return {
       recipe: RecepiesData[0],

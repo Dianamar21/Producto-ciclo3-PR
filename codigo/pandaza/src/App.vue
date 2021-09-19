@@ -1,8 +1,9 @@
+  
 <template>
-  <b-container fluid>
+  <v-app id="inspire">
     <!-- If using vue-router -->
     <router-view></router-view>
-  </b-container>
+  </v-app>
 </template>
 
 <script>
