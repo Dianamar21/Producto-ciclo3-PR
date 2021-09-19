@@ -10,10 +10,10 @@
       <thead>
         <tr>
           <th class="text-left">
-            Name
+            Nombre del ingrediente:
           </th>
           <th class="text-left">
-            Calories
+            Unidad de medida + Cantidad:
           </th>
         </tr>
       </thead>
