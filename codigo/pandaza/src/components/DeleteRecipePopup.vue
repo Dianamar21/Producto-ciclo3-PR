@@ -2,11 +2,11 @@
   <div class="text-center">
     <v-sheet
       class="px-7 pt-7 pb-4 mx-auto text-center d-inline-block"
-      color="blue-grey darken-3"
+      color="indigo"
       dark
     >
-      <div class="grey--text text--lighten-1 text-body-2 mb-4">
-        Are you sure you want to delete this recipe?
+      <div class="white--text text--lighten-1 text-body-2 mb-4">
+        ¿Está seguro/a de querer eliminar esta receta?
       </div>
 
       <v-btn
@@ -15,7 +15,7 @@
         color="grey"
         plain
       >
-        Cancel
+        No,cancelar
       </v-btn>
 
       <v-btn
@@ -25,7 +25,7 @@
         plain
         @click="remove"
       >
-        Delete
+        Sí,eliminar
       </v-btn>
     </v-sheet>
   </div>
