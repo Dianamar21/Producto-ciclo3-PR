@@ -5,11 +5,13 @@
     <!--<router-view></router-view>-->
   <!--</v-app>-->
 
+   <!--SECCION MENU LATERAL-->
   <v-app>
   <v-navigation-drawer class="deep-purple accent-4"
-      v-model="drawer" src="https://picsum.photos/1920/1080?random" 
+      v-model="drawer" src="https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg" 
       dark
       app >
+      <!--ANTES: v-model="drawer" src="https://picsum.photos/1920/1080?random"-->
     <!-- iconos y texto en menu lateral -->
     <v-list>
         <v-list-item
@@ -30,10 +32,10 @@
 
   <v-app-bar
       color="deep-purple accent-4"  dark app
-         
-      src="https://picsum.photos/1920/1080?random"
-     
+      src="https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg"
       >
+      <!-- ANTES:  src="https://picsum.photos/1920/1080?random"-->  
+
       <v-app-bar-nav-icon @click="drawer = !drawer">
         <!-- otra opcion: v-on:click  -->
         

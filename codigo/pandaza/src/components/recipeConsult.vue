@@ -19,7 +19,7 @@
   >
     <template slots="progress">
       <v-progress-linear
-        color="deep-purple"
+        color="blue darken-4"
         height="10"
         indeterminate
       ></v-progress-linear>
