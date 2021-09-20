@@ -81,12 +81,45 @@
 
   <v-footer app>
     <!-- -->
+  <v-footer
+    dark
+    padless
+  >
+    <v-card
+      class="flex"
+      flat
+      tile
+    >
+      <v-card-title class="teal">
+        <strong class="subheading">¡Contacta al equipo desarrollador!</strong>
+        <p><a href="tel:+573135253515">Llama ahora</a></p>
+
+        <v-spacer></v-spacer>
+
+        <v-btn
+          v-for="icon in icons"
+          :key="icon"
+          class="mx-4"
+          dark
+          icon
+        >
+          <v-icon size="24px">
+            {{ icon }}
+          </v-icon>
+        </v-btn>
+      </v-card-title>
+
+      <v-card-text class="py-2 white--text text-center">
+        {{ new Date().getFullYear() }} — <strong>Power Rangers Team</strong>
+      </v-card-text>
+    </v-card>
+  </v-footer>
   </v-footer>
 </v-app>
 </template>
 
 <script>
 export default {
-  components: {},
+  components: {}
 };
 </script>
