@@ -28,7 +28,7 @@
 
     <v-img
       height="250"
-      src= "https://cdn.vuetifyjs.com/images/cards/cooking.png"
+      :src= "recipe.image"
       
     ></v-img >
     <!--ANTES: src="https://cdn.vuetifyjs.com/images/cards/cooking.png"-->
@@ -123,11 +123,13 @@ export default {
         createdUser: "5c7e06e6-1837-11ec-9621-0242ac130002",
         title: "Sancocho",
         base: "Caldo tipico en las tierras del valle del cauca -col.",
+        image: "https://media-cdn.tripadvisor.com/media/photo-s/16/8b/be/32/sancocho-valluno-de-gallina.jpg",
         },
         {id: "2e41fee0-1837-11ec-9621-0242ac130002",
         createdUser: "5c7e06e6-1837-11ec-9621-0242ac130002",
         title: "Bandeja Paisa",
         base: "Bandeja caracteristica de la region antioqueña.",
+        image: "http://c.files.bbci.co.uk/DBBF/production/_105055265_bandejapaisa.jpg",
         }
       ] 
     } 
