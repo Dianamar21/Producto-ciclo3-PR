@@ -11,7 +11,8 @@
 
 <div id="resultado">
      <v-row>
-         <v-col v-for="n in 10" :key="n">>
+         <v-col v-for="recipe in recipes" :key="recipe.id">>
+           <!--ANTES:<v-col v-for="n in 10" :key="n">-->
     <v-card
     :loading="loading"
     class="mx-auto my-12"
@@ -27,10 +28,13 @@
 
     <v-img
       height="250"
-      src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-    ></v-img>
+      src= "https://cdn.vuetifyjs.com/images/cards/cooking.png"
+      
+    ></v-img >
+    <!--ANTES: src="https://cdn.vuetifyjs.com/images/cards/cooking.png"-->
 
-    <v-card-title>Cafe Badilico</v-card-title>
+    <v-card-title>{{recipe.title}} </v-card-title>
+    <!--ANTES: <v-card-title>Cafe Badilico</v-card-title>-->
 
     <v-card-text>
       <v-row
@@ -55,7 +59,7 @@
         $ • Italian, Cafe
       </div>
 
-      <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
+      <div>{{recipe.base}}</div>
     </v-card-text>
 
     <v-divider class="mx-4"></v-divider>
@@ -96,51 +100,42 @@
 </template>
 
 <script>
-/*
-function mostrarEnPantalla(){
-    const inputName = document.getElementById("consultar_receta");
-    //const salida= document.getElementById("salida");
-    //const salida2= document.getElementById("salida");
-    const salida3= document.getElementById("salida");
-    
-    let resultado = "";
-    //var datos_receta = "<ul>ingrediente 1</ul> <ul>ingrediente 2</ul><br>"
-    var botonzaso = "<div class='d-grid gap-2'><button type='button ' class='btn btn-primary' onclick='mostrarEnPantalla()'><b>Detalles</b></button></div>";
-    
-   // ` simbolo para concatenar en diferentes lineas
-                
-    var datos_receta = "ingrediente 1 <br> ingrediente 2<br>"+botonzaso;
-    for(let i=0; i<6; i++){
-        resultado += "<div class ='col'>" 
-                    +"<b>Receta: </b>"
-                    +inputName.value+ " " +(i+1)+
-                    "<br>"
-                    +datos_receta+"<br></div>";   
-    }
-           
-    //salida.innerHTML = "<h3>"+inputName.value+"</h3>";
-    //salida2.innerHTML = "<div class ='row row-cols-3'>"+inputName.value+"</div>";
-    //salida3.innerHTML = "<div class ='row row-col-lg-3 row-col-md-3 row-col-sm-1 row-cols-3'>"+resultado+"</div>";
-    salida3.innerHTML = "<div class ='row row-col-xs-1 row-col-sm-1'>"+resultado+"</div>";
-    
-    //salida3.innerHTML = "<div class ='row row-cols-3'>"+resultado+"</div>";
 
-    console.log(inputName.value);
-    inputName.value = "";
+//import recipes from "../dummy/recipes.json";
 
-}*/
 export default {
     name: 'recipeConsult',
-    inputName: "document.getElementById('consultar_receta')",
-     salida: "document.getElementById('salida')",
+    //dummy: {recipes},
   props: {
     msg: String
-  }, methods:{
-     mostrarEnPantalla(){
-          
-
-      }
+  },
+  // ============== PRUEBAS BASE DE DATOS ==================
+  data(){
+    return{
+      recipes:[
+        {id: "2e41fee0-1837-11ec-9621-0242ac130002",
+        createdUser: "5c7e06e6-1837-11ec-9621-0242ac130002",
+        title: "Pastas de la abuela",
+        base: "Plato tipico de abuela tradicional italiana.",
+        image: "https://www.goya.com/media/3854/southwestern-chicken-and-rice.jpg",
+        },
+        {id: "2e41fee0-1837-11ec-9621-0242ac130002",
+        createdUser: "5c7e06e6-1837-11ec-9621-0242ac130002",
+        title: "Sancocho",
+        base: "Caldo tipico en las tierras del valle del cauca -col.",
+        },
+        {id: "2e41fee0-1837-11ec-9621-0242ac130002",
+        createdUser: "5c7e06e6-1837-11ec-9621-0242ac130002",
+        title: "Bandeja Paisa",
+        base: "Bandeja caracteristica de la region antioqueña.",
+        }
+      ] 
+    } 
   }
+  //, //methods:{
+     //mostrarEnPantalla(){    
+      //}
+  //}
 
 }
 </script>
