@@ -47,9 +47,25 @@
             />
           </v-col>
         </v-row>
+        <v-row
+          align="center"
+          justify="space-around"
+        >
+          <v-btn depressed
+          color="primary">
+            Guardar
+          </v-btn>
+          <v-btn
+            depressed
+            color="primary"
+          >
+            Eliminar
+          </v-btn>
+        </v-row>
       </v-container>
     </v-form>
   </div>
+
 </template>
 
 <script>
