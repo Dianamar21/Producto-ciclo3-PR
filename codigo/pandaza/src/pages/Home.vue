@@ -79,9 +79,11 @@
 
 import recipeConsult from '../components/recipeConsult.vue'
 
+
 export default {
   components: {
     recipeConsult
   },
+   
 };
 </script>
