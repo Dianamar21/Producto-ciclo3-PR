@@ -1,5 +1,5 @@
 # pandaza
-Reipe website for Pandaza
+Recipe website for Pandaza
 
 ## Project setup
 ```
