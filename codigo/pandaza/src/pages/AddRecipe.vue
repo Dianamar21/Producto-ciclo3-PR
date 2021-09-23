@@ -14,15 +14,10 @@
         </v-row>
         <v-row>
           <v-col cols="12">
-            <v-carousel>
-              <v-carousel-item
-                v-for="(item, index) in recipe.images"
-                :key="index"
-                :src="item"
-                reverse-transition="fade-transition"
-                transition="fade-transition"
-              />
-            </v-carousel>
+              <v-file-input
+    accept="image/*"
+    label="File input"
+  ></v-file-input>
           </v-col>
         </v-row>
         <v-row v-for="ingridient in recipe.ingridients" :key="ingridient.id">
