@@ -37,6 +37,21 @@
             ></v-text-field>
           </v-col>
         </v-row>
+          <v-row
+          align="center"
+          justify="space-around"
+        >
+          <v-btn depressed
+          color="primary">
+            Agregar Ingrediente
+          </v-btn>
+          <v-btn
+            depressed
+            color="primary"
+          >
+            Eliminar Ingrediente
+          </v-btn>
+        </v-row>
         <v-row>
           <v-col cols="12">
             <v-textarea
