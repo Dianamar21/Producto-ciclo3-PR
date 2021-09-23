@@ -15,16 +15,17 @@
     <!-- iconos y texto en menu lateral -->
     <v-list>
         <v-list-item
-          v-for="([icon, text], i) in items"
-          :key="i"
+          v-for="item in items"
+          :key="item.title"
+          :to="item.page" 
           link
         >
           <v-list-item-icon>
-            <v-icon>{{ icon }}</v-icon>
+            <v-icon color="yellow accent-2">{{ item.icon }}</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>{{ text }}</v-list-item-title>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -106,10 +107,14 @@
         title: "Pandaza",
         drawer: false,
         items: [
-        ['mdi-email', 'Inbox'],
-        ['mdi-account-supervisor-circle', 'Supervisors'],
-        ['mdi-clock-start', 'Clock-in'],
+        {icon:'mdi-home-outline', title:'Home', page: "/"},
+        {icon:'mdi-email',title: 'Inbox',page:"/Inbox"},
+        {icon:'mdi-account-plus', title:'Login',page:"/Login" },
+        {icon:'mdi-silverware-fork-knife', title:'Add recipe',page:"/AddRecipe"},
+        {icon:'mdi-food', title:'View recipe', page:"/ViewRecipe"},
+        {icon:'mdi-shaker-outline', title:'Edit recipe', page:"/EditRecipe"},
         ],
+        
       }
     }, method:{
       
