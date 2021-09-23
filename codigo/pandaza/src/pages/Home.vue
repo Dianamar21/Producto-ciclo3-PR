@@ -14,10 +14,11 @@
         <b>Login</b>
       </v-btn>
     </template>
+<!--FORMULARIO-->
     <form action="" @submit.prevent="login">
       <div class="card bg-login">
         <div class="card-header m-4 bg- text-white">
-          <h1><b>Login</b></h1>
+          <h1><b>Iniciar Sesion</b></h1>
         </div>
         
         <div class="card-body">
@@ -27,12 +28,14 @@
             <div class="m-4">
                 <input class="form-control" type="password" v-model="password" placeholder="Contraseña" >
             </div>
-        </div>
-        <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="primary" > <b>Login</b></v-btn>
-        </v-card-actions>
-            <a href="">Aun no eres miembro ? registrate</a>
+          <div class="mb-3">
+            <button class="btn btn-primary"><b>Login</b></button>
+            <p v-if="error" class="error">Has introducido mal el email o la contraseña.</p>
+          </div>
+        </div>
+            <router-link to="/recipe/register" >  Aun no eres miembro ? registrate</router-link>
+            
       </div>
     </form>
     </v-dialog>
@@ -75,18 +78,19 @@ export default {
     recipeConsult,
         
   },  data: () => ({
-        email: "",
+        correo: "",
         password: ""
   }),
   methods:{
     login(){
+      console.log(this.correo);
+      console.log(this.password);
 
     }
   }
    
 };
 </script>
-
 
 
 <style scoped>

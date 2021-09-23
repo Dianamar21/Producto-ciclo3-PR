@@ -7,6 +7,7 @@ import EditRecipePage from '../pages/EditRecipe.vue';
 import ViewRecipePage from '../pages/ViewRecipe.vue';
 import SignUpPage from '../pages/SignUp.vue';
 import DeleteRecipePopup from '../components/DeleteRecipePopup.vue';
+import Registro from '../components/Registro.vue';
 
 Vue.use(VueRouter);
 
@@ -15,8 +16,9 @@ const routes = [
     { path: '/recipe/add', component: AddRecipePage },
     { path: '/recipe/edit', component: EditRecipePage },
     { path: '/recipe/view', component: ViewRecipePage },
+    { path: '/recipe/register', component: Registro },
     { path: '/signup', component: SignUpPage },
-    { path: '/delete', component: DeleteRecipePopup},
+    { path: '/delete', component: DeleteRecipePopup },
 ];
 
 const router = new VueRouter({
