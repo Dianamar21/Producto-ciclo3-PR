@@ -1,75 +1,65 @@
 <template>
-  
+  <!--BOTON LOGIN MODAL-->
   <div>
-  
-  <div>
-    <!--   CAJON EXCLUSIVO LOGIN      -->
-    <h4>LOGIN</h4>
-    
-    <v-form v-model="valid">
-    <v-container>
-      <v-row>
-        <v-col
-          cols="12"
-          md="4"
-        >
-          <v-text-field
-            v-model="firstname"
-            :rules="nameRules"
-            :counter="10"
-            label="Usuario"
-            required
-          ></v-text-field>
-        </v-col>
-
-        <v-col
-          cols="12"
-          md="4"
-        >
-          <v-text-field
-            v-model="email"
-            :rules="emailRules"
-            label="E-mail"
-            required
-          ></v-text-field>
-        </v-col>
-      
-
-      <v-col
-          cols="12"
-          md="4"
-        >
-      <v-btn
-      depressed
-      color="primary"
-    >
-      LOGIN
+    <v-btn elevation="2" bottom right fixed fab >
+    <v-icon>mdi-plus</v-icon>
     </v-btn>
-      </v-col>
-    </v-row>
-
-
-    </v-container>
-  </v-form>
-
+  <div>
+<!--FINAL BOTON LOGIN MODAL-->
+<!--LOGIN MODAL-->
+  <div class="text-center">
+    <v-dialog v-model="dialog" width="600">
+    <template  v-slot:activator="{ on, attrs }">
+      <v-btn bottom right fixed fab color="red lighten-2" dark v-bind="attrs" v-on="on">
+        <b>Login</b>
+      </v-btn>
+    </template>
+    <form action="" @submit.prevent="login">
+      <div class="card bg-login">
+        <div class="card-header m-4 bg- text-white">
+          <h1><b>Login</b></h1>
+        </div>
+        
+        <div class="card-body">
+            <div class="m-4">
+                <input class="form-control" type="email" v-model="correo"  placeholder="Correo">
+            </div>
+            <div class="m-4">
+                <input class="form-control" type="password" v-model="password" placeholder="Contraseña" >
+            </div>
+        </div>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="primary" > <b>Login</b></v-btn>
+        </v-card-actions>
+            <a href="">Aun no eres miembro ? registrate</a>
+      </div>
+    </form>
+    </v-dialog>
   </div>
-      <!--   BANNERRRRRRRRRRRRRRRRRRRRRRRRRRRR      -->
-      <v-img
-      lazy-src="../assets/banner_2.jpg"
+</div>
+
+<!--   BANNERRRRRRRRRRRRRRRRRRRRRRRRRRRR      -->
+  <v-img lazy-src="../assets/banner_2.jpg"
       max-height="300"
       max-width="1400"
-      src="../assets/banner_2.jpg"
-    ></v-img>
+      src="../assets/banner_2.jpg"></v-img>
       <!--ANTES:src="https://picsum.photos/id/11/500/300"-->
       <!--ANTES: lazy-src="https://picsum.photos/id/11/10/6"-->
       
-      <br>
+      <hr>
   
   <!--   DATOS DE TITULO ANTES DE CONSULTAR RECETA      -->
-    <h1>Bienvenido a Pandaza</h1>
-    <h4>El recetario colaborativo mas grande del mundo</h4>
-    <recipeConsult></recipeConsult>
-  </div> 
+    <div class="container">
+      <h1><b> Bienvenido a Pandaza</b></h1>
+      <h4>El recetario colaborativo mas grande del mundo</h4>
+      <recipeConsult></recipeConsult>
+    </div>
+   
+
+</div> 
+
+
 
 </template>
 
@@ -82,8 +72,25 @@ import recipeConsult from '../components/recipeConsult.vue'
 
 export default {
   components: {
-    recipeConsult
-  },
+    recipeConsult,
+        
+  },  data: () => ({
+        email: "",
+        password: ""
+  }),
+  methods:{
+    login(){
+
+    }
+  }
    
 };
 </script>
+
+
+
+<style scoped>
+.bg-login{
+  background-image: url('../assets/baner-login.jpg') ;
+}
+</style>

@@ -3,6 +3,7 @@
     <div class="transition-swing text-h3 mb--1">Editar Receta</div>
     <v-form>
       <v-container>
+
         <v-row>
           <v-col cols="12">
             <v-text-field
@@ -12,6 +13,7 @@
             />
           </v-col>
         </v-row>
+
         <v-row>
           <v-col cols="12">
             <v-carousel>
