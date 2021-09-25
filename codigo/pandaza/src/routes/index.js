@@ -2,21 +2,28 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import HomePage from '../pages/Home.vue';
-import AddRecipePage from '../pages/AddRecipe.vue';
-import EditRecipePage from '../pages/EditRecipe.vue';
-import ViewRecipePage from '../pages/ViewRecipe.vue';
 import SignUpPage from '../pages/SignUp.vue';
-import DeleteRecipePopup from '../components/DeleteRecipePopup.vue';
+import AddRecipePage from '../pages/AddRecipe.vue';
+import ViewRecipePage from '../pages/ViewRecipe.vue';
+import EditRecipePage from '../pages/EditRecipe.vue';
+//import DeleteRecipePopup from '../components/DeleteRecipePopup.vue';
 
 Vue.use(VueRouter);
-
+/*{
+    path: '/supervisor',
+    name: 'Supervisors',
+    component: () => import('../views/Supervisor.vue')
+    //carga perezosa, se usa cuando se da click o ejecuten, luego importa
+    //la pagina
+  }, */
 const routes = [
-    { path: '/', component: HomePage },
-    { path: '/recipe/add', component: AddRecipePage },
-    { path: '/recipe/edit', component: EditRecipePage },
-    { path: '/recipe/view', component: ViewRecipePage },
-    { path: '/signup', component: SignUpPage },
-    { path: '/delete', component: DeleteRecipePopup},
+    { path: '/', component: HomePage},
+    //{ path: '/recipe/Home', component: HomePage},
+    { path: '/AddRecipe', component: AddRecipePage },
+    { path: '/EditRecipe', component: EditRecipePage },
+    { path: '/ViewRecipe', component: ViewRecipePage },
+    { path: '/Login', component: SignUpPage },
+    //{ path: '/delete', component: DeleteRecipePopup},
 ];
 
 const router = new VueRouter({
