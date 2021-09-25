@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="transition-swing text-h3 mb--1">Editar Receta</div>
+    <div class="transition-swing text-h3 mb--1">Ver Receta</div>
     <v-form>
       <v-container>
         <v-row>
