@@ -1,0 +1,16 @@
+{
+    "name": "pandaza-backend",
+    "version": "1.0.0",
+    "license": "MIT",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "express": "4.17.1",
+        "express-jwt": "6.1.0"
+    },
+    "devDependencies": {
+
+    }
+}
