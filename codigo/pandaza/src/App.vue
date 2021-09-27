@@ -96,7 +96,7 @@
         drawer: false,
         items: [
         {icon:'mdi-home-outline', title:'Home', page: "/"},
-        {icon:'mdi-email',title: 'Inbox',page:"/Inbox"},
+        {icon:'mdi-email',title: 'Coments',page:"/PComent"},
         {icon:'mdi-account-plus', title:'Login',page:"/Login" },
         {icon:'mdi-silverware-fork-knife', title:'Add recipe',page:"/AddRecipe"},
         {icon:'mdi-food', title:'View recipe', page:"/ViewRecipe"},

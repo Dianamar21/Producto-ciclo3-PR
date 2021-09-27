@@ -6,6 +6,7 @@ import SignUpPage from '../pages/SignUp.vue';
 import AddRecipePage from '../pages/AddRecipe.vue';
 import ViewRecipePage from '../pages/ViewRecipe.vue';
 import EditRecipePage from '../pages/EditRecipe.vue';
+import pruebacoment from '../pages/pruebasComentario.vue';
 //import DeleteRecipePopup from '../components/DeleteRecipePopup.vue';
 
 Vue.use(VueRouter);
@@ -23,7 +24,7 @@ const routes = [
     { path: '/EditRecipe', component: EditRecipePage },
     { path: '/ViewRecipe', component: ViewRecipePage },
     { path: '/Login', component: SignUpPage },
-    //{ path: '/delete', component: DeleteRecipePopup},
+    { path: '/PComent', component: pruebacoment},
 ];
 
 const router = new VueRouter({
