@@ -95,6 +95,18 @@
   </v-col>
   </v-row>
   </div>
+
+  <div>
+    PRUEBAS DE MUESTRA DE registros
+    <v-row>
+      <v-col v-for="reg in registros"
+      :key="reg.name"
+      >
+      {{reg.name}}
+      </v-col>
+    </v-row>
+  </div>
+
 </div>
 
 </template>
@@ -102,6 +114,8 @@
 <script>
 
 //import recipes from "../dummy/recipes.json";
+import SignUp from "../pages/SignUp.vue";
+
 
 export default {
     name: 'recipeConsult',
@@ -109,9 +123,19 @@ export default {
   props: {
     msg: String
   },
+
+  pages: {
+    SignUp,
+  },
+
+
   // ============== PRUEBAS BASE DE DATOS ==================
   data(){
     return{
+      
+      // Llamado para recojer Datos usuarios registrados
+      registros: [],
+
       recipes:[
         {id: "2e41fee0-1837-11ec-9621-0242ac130002",
         createdUser: "5c7e06e6-1837-11ec-9621-0242ac130002",
@@ -133,7 +157,14 @@ export default {
         }
       ] 
     } 
-  }
+  },
+  mounted(){
+      let userList = JSON.parse(localStorage.getItem("userList"));
+      if(userList != undefined){
+        this.registros=userList;
+        
+      }
+    },
   //, //methods:{
      //mostrarEnPantalla(){    
       //}
