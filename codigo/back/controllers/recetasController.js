@@ -56,4 +56,3 @@ module.exports = class RecetasController {
         }
     }
 }
-let p = 1;
