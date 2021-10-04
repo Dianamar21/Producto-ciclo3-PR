@@ -1,13 +1,14 @@
 <template>
   <div>
     <!--   CAJON EXCLUSIVO LOGIN      -->
-    <h4>LOGIN</h4>
+    <h4 v-show="!isUserLoggedIn">LOGIN</h4>
 
-    <v-form>
+    <v-form v-show="!isUserLoggedIn">
       <v-container>
         <v-row>
           <v-col cols="12" md="4">
             <v-text-field
+              v-model="email"
               :rules="[rules.required, rules.email]"
               label="E-mail"
               required
@@ -17,8 +18,9 @@
           <v-col cols="12" md="4">
             <v-text-field
               label="Password"
+              v-model="password"
               :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-              :rules="[rules.required, rules.min]"
+              :rules="[rules.required]"
               :type="showPassword ? 'text' : 'password'"
               required
               @click:append="showPassword = !showPassword"
@@ -26,11 +28,14 @@
           </v-col>
 
           <v-col cols="12" md="4">
-            <v-btn depressed color="primary"> LOGIN </v-btn>
+            <v-btn @click="login" depressed color="primary"> LOGIN </v-btn>
           </v-col>
         </v-row>
       </v-container>
     </v-form>
+    <h3 v-show="isUserLoggedIn">
+      {{ message }}
+    </h3>
   </div>
 </template>
 
@@ -40,18 +45,32 @@ import axios from "axios";
 export default {
   methods: {
     async login() {
-      const { data: token } = await axios.post(
-        "http://localhost:3000/api/session/login",
-        { username: "test", password: "test123" }
-      );
-      localStorage.setItem("pandaza-token", token);
+      try {
+        const requestBody = {
+          email: this.email,
+          password: this.password,
+        };
+        const response = await axios.post(
+          "http://localhost:3000/api/usuarios/login",
+          requestBody
+        );
+        localStorage.setItem("pandaza-token", response.data.token);
+        this.isUserLoggedIn = true;
+        this.message = `Bienvenido ${response.data.name} a tu recetario`;
+      } catch (error) {
+        this.isUserLoggedIn = false;
+        this.message = `Email o Password incorrectos`;
+        throw error;
+      }
     },
   },
   data() {
     return {
       showPassword: false,
-      username: "",
       email: "",
+      password: "",
+      message: "",
+      isUserLoggedIn: false,
       rules: {
         required: (value) => !!value || "Campo requerido.",
         email: (value) => {

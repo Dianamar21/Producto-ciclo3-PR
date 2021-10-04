@@ -20,6 +20,8 @@ Para poder ejecutar se requiere tener una URL de MongoDB configurada en un archi
 ```
 DB_URI=[URL DB CON CLAVE]
 PORT=3000
+ENCRIPTADO_KEY=[VALOR GENERADO POR RANGER ROSA]
+ENCRIPTADO_INIT_VECTOR=[VALOR GENERADO POR RANGER ROSA]
 ```
 
 Por favor reemplazar `[URL DB CON CLAVE]` con la URL de Mongo que contenga el usuario y la clave, incluir el nombre de la base de datos en esta URL, ejemplo:
@@ -27,4 +29,6 @@ Por favor reemplazar `[URL DB CON CLAVE]` con la URL de Mongo que contenga el us
 ```
 DB_URI=mongodb+srv://usuarioejemplo:claveejemplo@servidor-mongo-ejemplo/base-de-datos-ejemplo?retryWrites=true&w=majority
 PORT=3000
+ENCRIPTADO_KEY=ABCDEF12345
+ENCRIPTADO_INIT_VECTOR=ABC123
 ```
