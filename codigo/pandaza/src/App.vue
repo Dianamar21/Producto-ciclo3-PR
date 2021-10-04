@@ -51,9 +51,9 @@
       <v-spacer></v-spacer>
 
       <!-- componente se muestra solo si el usuario esta autenticado o no -->
-      <v-btn icon :v-show="isAuthenticated">
+      <!-- <v-btn icon :v-show="isAuthenticated">
         <v-icon>mdi-magnify</v-icon>
-      </v-btn>
+      </v-btn> -->
 
       <v-menu left bottom>
         <template v-slot:activator="{ on, attrs }">
