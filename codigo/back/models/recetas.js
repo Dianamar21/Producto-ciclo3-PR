@@ -8,4 +8,6 @@ const recetasSchema = mongoose.Schema({
     "desc":String
 });
 
-module.exports = mongoose.model("Consultarecetas", recetasSchema);
+// Rager Rosa cambia el nombre de la coleccion de Consultarecetas a solo recetas,
+// ya que es generico y NO solo de consulta
+module.exports = mongoose.model("recetas", recetasSchema);
