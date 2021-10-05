@@ -51,9 +51,9 @@
       <v-spacer></v-spacer>
 
       <!-- componente se muestra solo si el usuario esta autenticado o no -->
-      <v-btn icon :v-show="isAuthenticated">
+      <!-- <v-btn icon :v-show="isAuthenticated">
         <v-icon>mdi-magnify</v-icon>
-      </v-btn>
+      </v-btn> -->
 
       <v-menu left bottom>
         <template v-slot:activator="{ on, attrs }">
@@ -96,11 +96,13 @@
         drawer: false,
         items: [
         {icon:'mdi-home-outline', title:'Home', page: "/"},
-        {icon:'mdi-email',title: 'Inbox',page:"/Inbox"},
+        {icon:'mdi-email',title: 'Coments',page:"/PComent"},
         {icon:'mdi-account-plus', title:'Login',page:"/Login" },
         {icon:'mdi-silverware-fork-knife', title:'Add recipe',page:"/AddRecipe"},
         {icon:'mdi-food', title:'View recipe', page:"/ViewRecipe"},
         {icon:'mdi-shaker-outline', title:'Edit recipe', page:"/EditRecipe"},
+        {icon:'mdi-shaker-outline', title:'PruebasFyB', page:"/Pruebasfrbk"},
+
         ],
        
       // sessionToken: loadToken(),
