@@ -9,6 +9,7 @@ module.exports = class RecetasController {
         } catch (err) {
             res.status(404).json({ message: err.message });
         }
+        
     }
 
     static async getByCode(req, res) {

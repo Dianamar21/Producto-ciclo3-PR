@@ -26,7 +26,7 @@ const routes = [
     { path: '/ViewRecipe', component: ViewRecipePage },
     { path: '/Login', component: SignUpPage },
     { path: '/PComent', component: pruebacoment},
-    { path: '/Pruebasfrbk', component: pruebaRecetas},
+    { path: '/Recetas', component: pruebaRecetas},
 ];
 
 const router = new VueRouter({

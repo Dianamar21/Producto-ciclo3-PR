@@ -1,155 +1,119 @@
 <template>
+  
+  <div class="recetas">
+    <h2>Recetario</h2>
     <v-container>
-    <div class="recetas">      
-          <h3>Esto es la conexion del front - back</h3>
-        <ul>
-            <li v-for="item in recetas" :key="item.code">              
-          <v-card elevation="2">
-          <v-card-title>{{item.name}}</v-card-title>
-            <v-simple-table>
-              <template v-slot:default>
-              <thead>
-                <tr>
-                <th class="text-center">
-                <b>Ingredientes</b>
-                </th>
-                <th class="text-center">
-                <b>Cantidades</b>
-                </th>
-                <th class="text-center">
-                <b>Und medida</b>
-                </th>
-                </tr>
-                </thead>
-                <tbody> 
-                  <!--td>{{recetas.ingredients.ningr[0]}}</td-->                       
-                        <tr v-for="val1 in recetas"
-                          :key="val1.code.code1">
-                          <td>{{ val1.ingredients.ningr }}</td>
-                          <!--td>{{ val1.cant }}</td>
-                          <td>{{ val1.udm }}</td-->                                                                                                 
-                        </tr>
-                </tbody>
-                    </template>
-                </v-simple-table>
-            <v-card-text>
-                <h4>Preparacion:</h4>
-                {{item.desc}}
-            </v-card-text>
+      <v-fab-transition>
+                <v-btn                  
+                  color="primary"
+                  fab
+                  dark
+                  medium
+                  absolute
+                  top
+                  right
+                  link to="/AddRecipe"
+                >
+                  <v-icon>mdi-plus</v-icon>
+                </v-btn>
+              </v-fab-transition>
+    <v-row>
+      <v-col v-for="item in recetas" :key="item" md="3" sm="6" lg="4">
+        
+      <v-card 
+      class="mx-auto"
+      max-width="400">
+      <v-img
+        :src="item.photoReceta"    
+        height="200px"
+      ></v-img>
+
+      <v-card-title>
+        {{item.nameReceta}}
+      </v-card-title>    
+          
+      <div>
+        <v-divider></v-divider>
+        <v-list shaped>
+          <v-list-item-group
+          v-model="selectedItem"
+          color="primary">
+        <v-list-item>
+          <v-list-item-content >
+            <v-list-item-title align = "justify"> ingredientes: </v-list-item-title>
+            <v-list-item-subtitle align = "right"> {{item.nameIngre.join(",")}} </v-list-item-subtitle>
             
-          </v-card>
-            </li>
-        </ul>    
+            <v-list-item-title align = "justify"> cantidades: </v-list-item-title>
+            <v-list-item-subtitle align = "right"> {{item.qtyIngre.join(",")}} </v-list-item-subtitle>
+          
+            <v-list-item-title align = "justify"> unidades de medida: </v-list-item-title>
+            <v-list-item-subtitle align = "right"> {{item.uomIngre.join(",")}} </v-list-item-subtitle>
+          </v-list-item-content>
+          
+        </v-list-item>
+        
+        </v-list-item-group>
+        </v-list>
+      </div>
+
+      <v-card-actions>
+      
+      <v-btn
+        outlined
+        color="success"
+        text> Agregar
+      </v-btn>
+            
+      <v-btn
+        outlined
+        color="red dark"
+        text>Borrar
+      </v-btn>
+
+      <v-spacer></v-spacer>
+
+      <v-btn
+        icon
+        @click="show = !show"
+        text
+        color="#033"
+      >
+        <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+      </v-btn>
+        </v-card-actions>
+
+        <v-expand-transition>
+          <div v-show="show">
+            <v-divider></v-divider>
+              <v-card-subtitle>
+                <b>Preparación:</b>
+              </v-card-subtitle>
+            <v-card-text>
+              {{item.descReceta}}
+            </v-card-text>
+          </div>
+        </v-expand-transition>
+      </v-card>
+      </v-col>
+    </v-row>
     
+    </v-container>
   </div>
-  <v-row>
-      <v-col cols="1" md="6">
-    <v-form
-    ref="form"
-    v-model="valid"
-    lazy-validation
-  >
-    <v-text-field
-      v-model="name"
-      :counter="12"
-      :rules="nameRules"
-      label="Name"
-      required
-    ></v-text-field>
-
-    <v-text-field
-      v-model="email"
-      :rules="emailRules"
-      label="E-mail"
-      required
-    ></v-text-field>
-
-    <v-text-field
-      v-model="photo"
-      :rules="photoRules"
-      label="photo"
-      required
-    ></v-text-field>
-
-    <v-select
-      v-model="select"
-      :items="items"
-      :rules="[v => !!v || 'Item is required']"
-      label="Item"
-      required
-    ></v-select>
-
-    <v-checkbox
-      v-model="checkbox"
-      :rules="[v => !!v || 'You must agree to continue!']"
-      label="Do you agree?"
-      required
-    ></v-checkbox>
-
-    <v-btn
-      :disabled="!valid"
-      color="success"
-      class="mr-4"
-      @click="validate"
-    >
-      Validate
-    </v-btn>
-
-    <v-btn
-      color="error"
-      class="mr-4"
-      @click="reset"
-    >
-      Reset Form
-    </v-btn>
-
-    <v-btn
-      color="warning"
-      @click="resetValidation"
-    >
-      Reset Validation
-    </v-btn>
-  </v-form>
-            </v-col>
-        </v-row>
-    </v-container>  
    
 </template>
 
 <script>
 
-import {getAllRecetas} from "../services/RecetaServices";
+import { getAllRecetas } from "../services/RecetaServices";
+
 export default {
     data(){
         return{
             recetas : [],
             valid: true,
-      name: '',
-      nameRules: [
-        v => !!v || 'Name is required',
-        v => (v && v.length <= 12) || 'Name must be less than 12 characters',
-      ],
-      photo: '',
-      photoRules: [
-        v => !!v || 'Photo is required',
-        //v => (v.$refs in(".png" & ".jpeg") || 'vndjnjdncnkmdd',
-      ],
-      email: '',
-      emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-      ],
-      select: null,
-      items: [
-        'Item 1',
-        'Item 2',
-        'Item 3',
-        'Item 4',
-      ],
-      checkbox: false
-            
-        }
-        
+            show: () => ({show: false,}),
+            selectedItem: 1,
+        }        
     },
     mounted(){
     getAllRecetas()
@@ -160,19 +124,9 @@ export default {
     .catch((err)=>console.error(err));
     },
     methods: {
-      validate () {
-        this.$refs.form.validate()
-      },
-      reset () {
-        this.$refs.form.reset()
-      },
-      resetValidation () {
-        this.$refs.form.resetValidation()
-      },
+      
     }
-
 }
-
 </script>
 
 <style>

@@ -7,26 +7,37 @@
           <v-col cols="12">
             <v-text-field
               outlined
-              label="Titulo Receta"
+              label="titulo receta"
               placeholder="Arroz con pollo"
+              v-model="nameReceta"
+              ref="nameReceta"
             />
           </v-col>
         </v-row>
         <v-row>
           <v-col cols="12">
-            <v-file-input accept="image/*" label="File input"></v-file-input>
+            <v-file-input accept="image/*" label="fotoreceta"
+             v-model="photoReceta" ref="photoReceta"></v-file-input>
           </v-col>
         </v-row>
         <v-row>
-          <v-col cols="5">
+          <v-col cols="4">
             <v-text-field
               outlined
               label="Nombre Ingrediente:"
               placeholder="Arroz"
+              v-model="nameIngre"
+              ref="nameIngre"
             ></v-text-field>
           </v-col>
-          <v-col cols="5">
-            <v-text-field outlined label="Cantidad:" placeholder="1 lb"></v-text-field>
+          <v-col cols="4">
+            <v-text-field outlined label="Cantidad:" 
+            placeholder="100, 200, ...." v-model="qtyIngre" ref="qtyIngre"></v-text-field>
+          </v-col>
+          <v-col cols="3">
+            <v-text-field outlined label="Und medida:" 
+            placeholder="gr, ml, tazas, unidades ..." v-model="uomIngre"
+            ref="uomIngre"></v-text-field>
           </v-col>
           <v-col cols="1">
             <v-btn class="mx-2" fab dark color="indigo">
@@ -59,11 +70,13 @@
               name="input-7-4"
               label="Descripcion"
               hint="Calentar sarten, agregar pollo y arroz"
+              v-model="descReceta"
+              ref="descReceta"
             />
           </v-col>
         </v-row>
         <v-row align="center" justify="space-around">
-          <v-btn depressed color="primary"> Guardar </v-btn>
+          <v-btn depressed color="primary" @click="guardarReceta()"> Guardar </v-btn>
         </v-row>
       </v-container>
     </v-form>
@@ -71,13 +84,37 @@
 </template>
 
 <script>
+//import axios from 'axios';
+import { insertReceta } from "../services/RecetaServices"
+
 export default {
-  components: {},
+  //components: {},
   data() {
     return {
-      recipe: {},
-      ingridients: [],
-    };
+      nameReceta: "",
+      photoReceta: "",
+      nameIngre: [],
+      qtyIngre: [],
+      uomIngre: [],
+      descReceta:""      
+    }     
   },
+  methods: {
+    guardarReceta() {
+        const receta = {
+          nameReceta: this.nameReceta,
+          photoReceta: this.photoReceta,
+          qtyIngre: this.qtyIngre,
+          uomIngre: this.uomIngre,
+          descReceta: this.descReceta,
+        }        
+        insertReceta(receta)
+        .then((response)=>{
+          console.log("Se ha creado la receta", response.data._id);
+        })
+        .catch((err)=>console.error(err));       
+
+      }
+  }
 };
 </script>
