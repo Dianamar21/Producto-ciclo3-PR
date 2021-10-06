@@ -18,13 +18,13 @@
     class="mx-auto my-12"
     max-width="374"
   >
-    <template slots="progress">
+    <!--template slots="progress">
       <v-progress-linear
         color="blue darken-4"
         height="10"
         indeterminate
       ></v-progress-linear>
-    </template>
+    </template -->
 
     <v-img
       height="250"
