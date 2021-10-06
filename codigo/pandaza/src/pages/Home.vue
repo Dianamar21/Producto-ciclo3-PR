@@ -32,5 +32,16 @@ export default {
     RecipeConsult,
     PandazaLogin,
   },
+  data:()=> ({
+  }),
 };
 </script>
+<style scoped>
+.bg-login{
+    background-image: url('../assets/banner-login.jpg') ;
+    background-size: cover;
+    background-position: center;
+    
+}
+</style>
+
