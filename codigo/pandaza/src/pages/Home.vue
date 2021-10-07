@@ -1,7 +1,5 @@
 <template>
   <div>
-    <PandazaLogin />
-
     <!--   BANNERRRRRRRRRRRRRRRRRRRRRRRRRRRR      -->
     <v-img
       lazy-src="../assets/banner_2.jpg"
@@ -17,20 +15,20 @@
     <!--   DATOS DE TITULO ANTES DE CONSULTAR RECETA      -->
     <h1>Bienvenido a Pandaza</h1>
     <h4>El recetario colaborativo mas grande del mundo</h4>
-    <RecipeConsult></RecipeConsult>
+    <!-- login -->
+    <PandazaLogin />
+    <ViewRecipe></ViewRecipe>
   </div>
 </template>
 
-
-
 <script>
 import PandazaLogin from "../components/Login.vue";
-import RecipeConsult from "../components/recipeConsult.vue";
-
+import ViewRecipe from "../pages/ViewRecipe.vue";
 export default {
   components: {
-    RecipeConsult,
+    //RecipeConsult,
     PandazaLogin,
+    ViewRecipe,
   },
 };
 </script>
