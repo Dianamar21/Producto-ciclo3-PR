@@ -97,7 +97,7 @@
         items: [
         {icon:'mdi-home-outline', title:'Home', page: "/"},
         {icon:'mdi-email',title: 'Coments',page:"/PComent"},
-        {icon:'mdi-account-plus', title:'Login',page:"/Login" },
+        {icon:'mdi-account-plus', title:'Registro',page:"/Login" },
         {icon:'mdi-silverware-fork-knife', title:'Add recipe',page:"/AddRecipe"},
         {icon:'mdi-food', title:'View recipe', page:"/ViewRecipe"},
         {icon:'mdi-shaker-outline', title:'Edit recipe', page:"/EditRecipe"},
@@ -125,6 +125,10 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  
+}
+*{
+  margin: 0;
+  padding: 0;
 }
 </style>

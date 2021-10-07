@@ -1,13 +1,17 @@
 const mongoose = require("mongoose");
 
 const recetasSchema = mongoose.Schema({
-    
-    "nameReceta": String,
-    "photoReceta": String,    
-    "nameIngre": Array(String),
-    "qtyIngre": Array(String),
-    "uomIngre": Array(String),
-    "descReceta":String
+
+    // yeison edito esto 
+    "nombreReceta": String,
+    "imagenReceta": String,
+    "ingredientes": Array,
+    "preparacion": String,
+    created: {
+        type: Date,
+        default: Date.now,
+    },
+
 });
 
 // Rager Rosa cambia el nombre de la coleccion de Consultarecetas a solo recetas,
