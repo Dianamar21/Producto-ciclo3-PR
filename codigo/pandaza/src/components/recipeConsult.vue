@@ -17,7 +17,7 @@
 </template>
 
 <script>
-//import axios from 'axios';
+import axios from 'axios';
 //import API from '../api';
 export default {
   name:RecipeConsult,
@@ -26,9 +26,9 @@ export default {
       recetas:[],
     };
   },
-  //async created(){
-  //  this.recetas = await this.axios.get('http://localhost:3000/api/recetas');
-  //},
+  async created(){
+   this.recetas = await this.axios.get('http://localhost:3000/recetas');
+  },
 }
 </script>
 

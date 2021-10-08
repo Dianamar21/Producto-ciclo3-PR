@@ -45,7 +45,7 @@
                 </v-row>
               </v-container>
               <small
-                > <a href="http://localhost:8080/login"> REGISTRATE AQUI </a> 
+                > <a href="http://localhost:3000/login"> REGISTRATE AQUI </a> 
                 <v-icon>mdi-format-list-bulleted-square </v-icon></small
               >
             </v-card-text>
@@ -79,7 +79,7 @@ export default {
           password: this.password,
         };
         const response = await axios.post(
-          "http://localhost:3000/api/usuarios/login",
+          "http://localhost:3000/usuarios/login",
           requestBody
         );
         localStorage.setItem("pandaza-token", response.data.token);

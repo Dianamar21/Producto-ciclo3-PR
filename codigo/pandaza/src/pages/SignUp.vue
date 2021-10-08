@@ -384,7 +384,7 @@ export default {
         password: this.password,
       };
 
-      const response = await axios.post('http://localhost:3000/api/usuarios', user);
+      const response = await axios.post('http://localhost:3000/usuarios', user);
       this.mensaje = response.data.message;
 
       // localStorage.setItem("userList", JSON.stringify(userList));
