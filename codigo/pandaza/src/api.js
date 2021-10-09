@@ -1,5 +1,5 @@
 import axios from 'axios';
-const url = '../api';
+const url = '../api/recetas';
 
 export default class API {
     // traer las recetas 
