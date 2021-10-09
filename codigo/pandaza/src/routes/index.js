@@ -8,25 +8,22 @@ import ViewRecipePage from '../pages/ViewRecipe.vue';
 import EditRecipePage from '../pages/EditRecipe.vue';
 import pruebacoment from '../pages/pruebasComentario.vue';
 import pruebaRecetas from '../pages/Recetas.vue';
-//import DeleteRecipePopup from '../components/DeleteRecipePopup.vue';
 
+//import DeleteRecipePopup from '../components/DeleteRecipePopup.vue';
+// aqui pendiente ...
 Vue.use(VueRouter);
-/*{
-    path: '/supervisor',
-    name: 'Supervisors',
-    component: () => import('../views/Supervisor.vue')
-    //carga perezosa, se usa cuando se da click o ejecuten, luego importa
-    //la pagina
-  }, */
+//pendiente   ----const lasImagenes = import('./')
+
+
 const routes = [
-    { path: '/', component: HomePage},
+    { path: '/', component: HomePage },
     //{ path: '/recipe/Home', component: HomePage},
     { path: '/AddRecipe', component: AddRecipePage },
     { path: '/EditRecipe', component: EditRecipePage },
     { path: '/ViewRecipe', component: ViewRecipePage },
     { path: '/Login', component: SignUpPage },
-    { path: '/PComent', component: pruebacoment},
-    { path: '/Recetas', component: pruebaRecetas},
+    { path: '/PComent', component: pruebacoment },
+    { path: '/Recetas', component: pruebaRecetas },
 ];
 
 const router = new VueRouter({

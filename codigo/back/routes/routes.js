@@ -4,6 +4,7 @@ const usuariosController = require("../controllers/usuariosController");
 const router = express.Router();
 
 // yeison hizo esta instancia...
+
 // yeison usando multer para poder insertar la imagen...
 const multer = require('multer');
 /// yeison mitlleware multer
@@ -21,6 +22,7 @@ const upload = multer({
 
 
 // rutas de recetas
+
 router.get("/ver-recetas", recetasController.getAll);
 router.get("/recetas/:_id", recetasController.getByCode);
 //: hace referencia a una variable - busqueda de un elemento especifico

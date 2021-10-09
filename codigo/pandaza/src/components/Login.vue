@@ -14,9 +14,6 @@
             </v-btn>
                 
           </template>
-          
-          
-
 
           <v-card>
             <v-card-title class="decorado">
@@ -146,9 +143,9 @@ background-color: #2c2fa5; /* Color de fondo al pasar el cursor */
 box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
 transform: translateY(-7px);
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width:320px) and (max-width: 479px) {
 .btn-flotante {
-font-size: 14px;
+font-size: 12px;
 padding: 12px 20px;
 bottom: 20px;
 right: 20px;

@@ -6,7 +6,7 @@
 
     <div clas=" cuerpo">
       <template>
-        <v-form  enctype="multipart/form-data">
+        <v-form enctype="multipart/form-data">
           <v-container>
             <v-row>
               <v-text-field
@@ -19,23 +19,20 @@
 
               <v-file-input
                 v-model="receta.imagenReceta"
-  
                 accept="image/png, image/jpeg, image/bmp"
                 placeholder=""
                 prepend-icon="mdi-camera"
                 label="Agrega una Imagen"
-                
               ></v-file-input>
 
               <div class="input-group mb-3 col-10">
-             
                 <input
                   type="text"
                   v-model="ingrediente"
                   placeholder="ingredientes"
                   class="form-control  "
                 />
-                   <input
+                <input
                   type="text"
                   v-model="cantidad"
                   placeholder="cantidad"
@@ -60,8 +57,9 @@
                 <span class="input-group-text ">Lista de ingredientes</span>
                 <ul>
                   <li v-for="(ing, index) in this.losIngredientes" :key="index">
-                    {{ index + 1 }} - {{ ing.ingrediente }} <span class="m-4"> x </span> {{ ing.cantidad }} 
-                    
+                    {{ index + 1 }} - {{ ing.ingrediente }}
+                    <span class="m-4"> x </span> {{ ing.cantidad }}
+
                     <v-btn
                       x-small
                       fab
@@ -76,21 +74,28 @@
                 </ul>
               </div>
 
-              <v-textarea solo label="Preparación"
-              v-model="receta.preparacion"
+              <v-textarea
+                solo
+                label="Preparación"
+                v-model="receta.preparacion"
               ></v-textarea>
 
               <div>
                 <v-row align="center" justify="space-around">
                   <v-col cols="12" md="2">
                     <a href="/">
-                      <v-btn depressed color="error" >
+                      <v-btn depressed color="error">
                         Cancelar
                       </v-btn>
                     </a>
                   </v-col>
                   <v-col cols="12" md="2">
-                    <v-btn depressed color="primary" type="submit" @click.prevent="submit">
+                    <v-btn
+                      depressed
+                      color="primary"
+                      type="submit"
+                      @click.prevent="submit"
+                    >
                       Nueva Receta
                     </v-btn>
                   </v-col>
@@ -101,7 +106,21 @@
         </v-form>
       </template>
     </div>
-    <div></div>
+    <div>
+      <template>
+        <div class="text-center ma-2">
+          <v-snackbar v-model="snackbar">
+            {{ text }}
+
+            <template v-slot:action="{ attrs }">
+              <v-btn color="pink" text v-bind="attrs" @click="snackbar = false">
+                Close
+              </v-btn>
+            </template>
+          </v-snackbar>
+        </div>
+      </template>
+    </div>
   </div>
 </template>
 
@@ -110,6 +129,8 @@
 export default {
   data() {
     return {
+      snackbar: false,
+      text: `Felicidades Creaste una nueva Receta`,
       Recetas: [],
       losIngredientes: [],
       ingrediente: "",
@@ -118,7 +139,6 @@ export default {
         nombreReceta: "",
         imagenReceta: [],
         preparacion: "",
-        
       },
     };
   },
@@ -133,26 +153,23 @@ export default {
     },
     async submit() {
       let laReceta = new FormData();
-          laReceta.append("nombreReceta", this.receta.nombreReceta);
-          laReceta.append("imagenReceta", this.receta.imagenReceta);
-          laReceta.append("ingredientes", JSON.stringify(this.losIngredientes));
-          laReceta.append("preparacion", this.receta.preparacion);
+      laReceta.append("nombreReceta", this.receta.nombreReceta);
+      laReceta.append("imagenReceta", this.receta.imagenReceta);
+      laReceta.append("ingredientes", JSON.stringify(this.losIngredientes));
+      laReceta.append("preparacion", this.receta.preparacion);
 
-          let result = await fetch("http://localhost:3000/recetas", {
-                  method: "POST",
-                  // autorization: `Bearer ${userToken}`,
-                  body: laReceta,
-                  
-                });
-          console.log(await result.json() );
+      let result = await fetch("http://localhost:3000/recetas", {
+        method: "POST",
+        // autorization: `Bearer ${userToken}`,
+        body: laReceta,
+      });
+      console.log(await result.json());
+      this.snackbar = true;
+      this.$router.Push("/home");
     },
-   
   },
 };
 </script>
-
-
-
 
 <style scoped>
 .container {
@@ -168,7 +185,8 @@ export default {
   background-position: center;
   height: 90px;
   color: antiquewhite;
-}a{
+}
+a {
   text-decoration: none;
 }
 </style>
