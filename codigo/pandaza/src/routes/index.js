@@ -18,13 +18,13 @@ Vue.use(VueRouter);
     //la pagina
   }, */
 const routes = [
-    { path: '/', component: HomePage},
+    { path: '/', component: HomePage },
     //{ path: '/recipe/Home', component: HomePage},
     { path: '/AddRecipe', component: AddRecipePage },
     { path: '/EditRecipe', component: EditRecipePage },
     { path: '/ViewRecipe', component: ViewRecipePage },
     { path: '/Login', component: SignUpPage },
-    { path: '/PComent', component: pruebacoment},
+    { path: '/PComent', component: pruebacoment },
 ];
 
 const router = new VueRouter({
