@@ -1,28 +1,24 @@
 <template>
   <div>
-    <div>
-      <h1>todas rece</h1>
-    </div>
-    <div>
-      y aqui van mas
-    </div>
-
     <v-container>
       <v-row no-gutters>
         <v-col sm="4" class="pa-3" v-for="receta in recetas" :key="receta._id">
           <v-card
             class="pa-1"
-            :to="{ name: 'receta', params: { id: receta._id } }"
+            :to="{ name: '/receta/:_id', params: { id: receta._id } }"
           >
-            <v-img height="250" :src="`/${reseta.imagenReceta}`"></v-img>
+            <v-img height="250" :src="`/${receta.imagenReceta}`"></v-img>
             <v-btn class="ml-4 mt-3" small outlined color="indigo">
               Ver Mas
             </v-btn>
+            <div class="row">
             <v-card-title class="headline">
-              {{ receta.nombreReceta }}
+              {{ receta.nombreReceta.substring(0,25) + "..." }}
             </v-card-title>
+            </div>
             <v-card-text class="py-0">
-              <p>{{ receta.preparacion.substring(0, 100) + "..." }}</p>
+              <p><b>Preparacion</b></p>
+              <p>{{ receta.preparacion.substring(0, 40) + "..." }}</p>
             </v-card-text>
           </v-card>
         </v-col>
@@ -41,25 +37,26 @@
 
 export default {
   components: {},
-  async data() {
-    const recetasDatos =  await this.mostrarRecetas();
+  data() {
+    
     return {
-      recetas: recetasDatos,
+      recetas:[],
     };
   },
   methods: {
-    async mostrarRecetas() {
-      const response = await fetch("http://localhost:3000/ver-recetas", {
-        method: "GET",
-      });
-      const data = await response.json();
-      return data;
-      
-      
+    listarRecetas() {
+      this.axios.get("http://localhost:3000/ver-recetas")
+        .then((response) => {
+          // console.log(response.data)
+          this.recetas = response.data;
+        })
+        .catch((e) => {
+          console.log("error" + e);
+        });
     },
     
     },mounted() {
-      this.mostrarRecetas();
+      this.listarRecetas();
   },
 };
 </script>
