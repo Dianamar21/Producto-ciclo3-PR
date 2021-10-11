@@ -1,0 +1,46 @@
+[
+    {
+        "id": "2e41fee0-1837-11ec-9621-0242ac130002",
+        "createdUser": "5c7e06e6-1837-11ec-9621-0242ac130002",
+        "title": "Pastas de la abuela",
+        "steps": "Caliente agua y agregue las pastas y espere hasta que esten blandas.",
+        "images": [
+            "https://holycowvegan.net/wp-content/uploads/2020/08/vegan-arroz-con-pollo-spanish-chicken-rice-1.jpg",
+            "https://www.goya.com/media/3854/southwestern-chicken-and-rice.jpg"
+        ],
+        "ingridients": [
+            {
+                "id": "8428391e-1837-11ec-9621-0242ac130002",
+                "name": "Agua",
+                "quantity": "1 lt"
+            },
+            {
+                "id": "9d0f4a62-1837-11ec-9621-0242ac130002",
+                "name": "Pastas",
+                "quantity": "1 paquete"
+            }
+        ]
+    },
+    {
+        "id": "2e41fee0-1837-11ec-9621-0242ac130002",
+        "createdUser": "5c7e06e6-1837-11ec-9621-0242ac130002",
+        "title": "Pastas de la abuela",
+        "steps": "Caliente agua y agregue las pastas y espere hasta que esten blandas.",
+        "images": [
+            "https://media.nbclosangeles.com/2020/07/portosarrozfrito.jpeg?quality=85&strip=all&fit=2100%2C1181&w=975&h=548&crop=1",
+            "https://www.goya.com/media/3854/southwestern-chicken-and-rice.jpg"
+        ],
+        "ingridients": [
+            {
+                "id": "8428391e-1837-11ec-9621-0242ac130002",
+                "name": "Agua",
+                "quantity": "1 lt"
+            },
+            {
+                "id": "9d0f4a62-1837-11ec-9621-0242ac130002",
+                "name": "Pastas",
+                "quantity": "1 paquete"
+            }
+        ]
+    }
+]
