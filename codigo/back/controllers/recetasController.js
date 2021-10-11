@@ -1,6 +1,6 @@
+
 const recetaModel = require("../models/recetas");
 //coment1
-const fs = require('fs')
 module.exports = class RecetasController {
     static async getAll(req, res) {
         try {
@@ -13,10 +13,10 @@ module.exports = class RecetasController {
     }
 
     static async getByCode(req, res) {
-        const code = req.params.code;
+        const nameReceta = req.params.nameReceta;
         try {
-            const receta = await recetaModel.findOne({ "code": code });
-            if (receta != null) {
+            const receta = await recetaModel.findOne({ "nameReceta": nameReceta });
+            if (receta != null || receta != undefined) {
                 res.status(200).json(receta);
             } else {
                 res.status(404).json();
@@ -27,14 +27,8 @@ module.exports = class RecetasController {
     }
 
     static async insert(req, res) {
-        //yeison edito aqui 
-        const receta = req.body;
-        const imagename = req.file.filename;
-        receta.imagenReceta = imagename;
-        receta.ingredientes = JSON.parse(receta.ingredientes);
-        // hasta aqui para agregar una imagen
         try {
-
+            const receta = req.body;
             const newReceta = await recetaModel.create(receta);
             res.status(201).json(newReceta);
         } catch (err) {
@@ -43,44 +37,23 @@ module.exports = class RecetasController {
     }
 
     static async update(req, res) {
-        //yeison edito aqui
-        const id = req.params.id;
-        let nueva_img = "";
-        if (req.file) {
-            nueva_img = req.file.filename;
-            try {
-                fs.unlinkSync('./uploads' + req.body.old_imagenReceta);
-            } catch (err) {
-                console.log(err);
-            }
-        } else {
-            nueva_img = req.body.old_imagenReceta;
-        }
-        const receta = req.body;
-        receta.imagenReceta = nueva_img;
-
         try {
-            await recetaModel.findByIdAndUpdate(id, receta);
-            res.status(200).json({ message: 'Receta actualizada!' });
+            const nameReceta = req.params.nameReceta;
+            const receta = req.body;
+            const newReceta = await recetaModel.updateOne({ "nameReceta": nameReceta }, receta);
+            res.status(200).json(newReceta);
         } catch (err) {
             res.status(400).json({ message: err.message });
         }
     }
 
     static async delete(req, res) {
-        const id = req.params.id;
         try {
-            const result = await recetaModel.findByIdAndDelete(id);
-            if (result.imagenReceta != '') {
-                try {
-                    fs.unlinkSync('./uploads/' + result.imagenReceta);
-
-                } catch (err) {
-                    console.log(err);
-                }
-            }
-
-            res.status(200).json({ message: 'Receta eliminada!' });
+            const nameReceta = req.params.nameReceta;
+            //const receta = req.body;
+            //borrar lo de receta
+            await recetaModel.deleteOne({ "nameReceta": nameReceta });
+            res.status(200).json();
         } catch (err) {
             res.status(400).json({ message: err.message });
         }
