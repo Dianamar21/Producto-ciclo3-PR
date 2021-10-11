@@ -1,192 +1,195 @@
 <template>
-  <div class="container">
-    <v-card-title class="decorado">
-      <span class="text-h5 "><b>Crea una Nueva Receta</b></span>
-    </v-card-title>
-
-    <div clas=" cuerpo">
-      <template>
-        <v-form enctype="multipart/form-data">
-          <v-container>
-            <v-row>
-              <v-text-field
-                v-model="receta.nombreReceta"
-                label="Nombre de tu Receta"
-                placeholder=""
-                counter="40"
-                required
-              ></v-text-field>
-
-              <v-file-input
-                v-model="receta.imagenReceta"
-                accept="image/png, image/jpeg, image/bmp"
-                placeholder=""
-                prepend-icon="mdi-camera"
-                label="Agrega una Imagen"
-              ></v-file-input>
-
-              <div class="input-group mb-3 col-10">
-                <input
-                  type="text"
-                  v-model="ingrediente"
-                  placeholder="ingredientes"
-                  class="form-control  "
-                />
-                <input
-                  type="text"
-                  v-model="cantidad"
-                  placeholder="cantidad"
-                  class="form-control"
-                />
-              </div>
-              <v-col cols="2" md="">
-                <v-btn
-                  class="mx-1"
-                  small
-                  fab
-                  color="cyan"
-                  @click="ingredientes()"
-                >
-                  <v-icon dark>
-                    mdi-plus
-                  </v-icon>
-                </v-btn>
-              </v-col>
-
-              <div>
-                <span class="input-group-text ">Lista de ingredientes</span>
-                <ul>
-                  <li v-for="(ing, index) in this.losIngredientes" :key="index">
-                    {{ index + 1 }} - {{ ing.ingrediente }}
-                    <span class="m-4"> x </span> {{ ing.cantidad }}
-
-                    <v-btn
-                      x-small
-                      fab
-                      color="cyan"
-                      @click="losIngredientes.splice(index, 1)"
-                    >
-                      <v-icon class="float-right">
-                        mdi-minus
-                      </v-icon>
-                    </v-btn>
-                  </li>
-                </ul>
-              </div>
-
-              <v-textarea
-                solo
-                label="Preparación"
-                v-model="receta.preparacion"
-              ></v-textarea>
-
-              <div>
-                <v-row align="center" justify="space-around">
-                  <v-col cols="12" md="2">
-                    <a href="/">
-                      <v-btn depressed color="error">
-                        Cancelar
-                      </v-btn>
-                    </a>
-                  </v-col>
-                  <v-col cols="12" md="2">
-                    <v-btn
-                      depressed
-                      color="primary"
-                      type="submit"
-                      @click.prevent="submit"
-                    >
-                      Nueva Receta
-                    </v-btn>
-                  </v-col>
-                </v-row>
-              </div>
-            </v-row>
-          </v-container>
-        </v-form>
-      </template>
-    </div>
-    <div>
-      <template>
-        <div class="text-center ma-2">
-          <v-snackbar v-model="snackbar">
-            {{ text }}
-
-            <template v-slot:action="{ attrs }">
-              <v-btn color="pink" text v-bind="attrs" @click="snackbar = false">
-                Close
-              </v-btn>
-            </template>
-          </v-snackbar>
-        </div>
-      </template>
-    </div>
+  <div>
+    <div class="transition-swing text-h3 mb--1">{{ titulo }}</div>
+    <v-form>
+      <v-container>
+        <v-row>
+          <v-col cols="12">
+            <v-text-field
+              outlined
+              label="titulo receta"
+              placeholder="Ej: Arroz frito con gambas"
+              v-model="nameReceta"
+              ref="nameReceta"
+              :rules="rules"
+            />
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12">
+            <!--v-text-input accept="image/*" label="fotoreceta"
+             v-model="photoReceta" ref="photoReceta"></v-file-input-->
+             <v-text-field
+              outlined
+              :rules="rules"
+              label="photo receta"
+              v-model="photoReceta"
+              ref="nameReceta"
+            />
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="4">
+            <v-text-field
+              outlined
+              label="Nombre Ingrediente:"
+              :rules="rules"
+              placeholder="Arroz"
+              v-model="ingre"
+              ref="nameIngre"
+            ></v-text-field>
+          </v-col>
+          <v-col cols="4">
+            <v-text-field outlined label="Cantidad/Unidad de medida:" 
+            placeholder="100 gr, 2 unidades, 2 tasas ...." :rules="rules" 
+            v-model="cant" ref="qtyIngre"></v-text-field>
+          </v-col>
+          <v-col cols="3">            
+          </v-col>
+          <v-col cols="1">
+            <v-btn class="mx-2" fab dark color="indigo" 
+            @click="agregarIngredientes()">
+              <v-icon dark> mdi-plus </v-icon>
+            </v-btn>
+          </v-col>
+        </v-row>
+        
+        <v-row>
+          <v-col cols="12">
+            <v-textarea
+              outlined
+              name="input-7-4"
+              :rules="rules"
+              label="Descripcion"
+              hint="Calentar sarten, agregar pollo y arroz"
+              v-model="descReceta"
+              ref="descReceta"
+            />
+          </v-col>
+        </v-row>
+        <v-row align="center" justify="space-around">
+          <v-btn depressed color="primary" v-if="!isEdit" @click="guardarReceta()"> Guardar </v-btn>
+          <v-btn depressed color="success" v-if="isEdit" @click="actualizarReceta()"> Actualizar </v-btn>    
+        </v-row>
+      </v-container>
+    </v-form>
   </div>
 </template>
 
 <script>
 //import axios from 'axios';
+import { insertReceta, getReceta, updateReceta} from "../services/RecetaServices"
+
 export default {
+  //components: {},
   data() {
     return {
-      snackbar: false,
-      text: `Felicidades Creaste una nueva Receta`,
-      Recetas: [],
-      losIngredientes: [],
-      ingrediente: "",
-      cantidad: "",
-      receta: {
-        nombreReceta: "",
-        imagenReceta: [],
-        preparacion: "",
-      },
-    };
+      titulo: "Agregar receta",
+      isEdit: false,
+      nameReceta: "",
+      photoReceta: "",
+      ingre: "",
+      cant: "",
+      listaIngredientes: [],
+      /*ingredients: {
+        qtyIngre: "",
+        nameIngre: "",
+      },*/     
+      descReceta:"",
+      rules: [value => !!value || 'Required.']      
+    }     
+  },
+  created (){
+    const code = this.$route.params.nameReceta;
+    console.log("¿Tiene nombre? ... " + code);
+    if(code != undefined){
+      
+      getReceta(code)
+      .then((response) => {
+        const receta = response.data;
+        this.nameReceta = receta.nameReceta;
+        this.photoReceta = receta.photoReceta;
+        this.listaIngredientes = receta.listaIngredientes;
+        this.ingre = receta.ingre;
+        this.cant = receta.cant;
+        this.descReceta = receta.descReceta;
+        //en la data u en este metodo???
+        this.titulo = "Editar Receta";
+        this.isEdit = true;
+      })
+      .catch( () => console.log("Datos no encontrados"));
+
+    }
   },
   methods: {
-    ingredientes() {
-      let ingredientes = {
-        ingrediente: this.ingrediente,
-        cantidad: this.cantidad,
-      };
-      this.losIngredientes.push(ingredientes);
-      (this.ingrediente = ""), (this.cantidad = "");
-    },
-    async submit() {
-      let laReceta = new FormData();
-      laReceta.append("nombreReceta", this.receta.nombreReceta);
-      laReceta.append("imagenReceta", this.receta.imagenReceta);
-      laReceta.append("ingredientes", JSON.stringify(this.losIngredientes));
-      laReceta.append("preparacion", this.receta.preparacion);
+    guardarReceta() {
 
-      let result = await fetch("http://localhost:3000/recetas", {
-        method: "POST",
-        // autorization: `Bearer ${userToken}`,
-        body: laReceta,
-      });
-      console.log(await result.json());
-      this.snackbar = true;
-      this.$router.Push("/home");
-    },
-  },
+      if(
+        this.nameReceta == undefined || this.nameReceta == "" ||
+        this.photoReceta == undefined || this.photoReceta == "" ||
+        this.listaIngredientes == undefined || this.listaIngredientes == [] ||
+        this.descReceta == undefined || this.descReceta == ""
+        //this.ingre == undefined || this.ingre == "" ||
+        //this.cant == undefined || this.cant == ""
+      ){
+        return console.log("no llenaste alguno de los" + 
+        "campos obligatorios");
+      }
+        const receta = {
+          nameReceta: this.nameReceta,
+          photoReceta: this.photoReceta,
+          listaIngredientes: this.listaIngredientes,
+          /*cant: this.cant,
+          ingre: this.ingre,*/
+          descReceta: this.descReceta,
+        }        
+        insertReceta(receta)
+        .then((response)=>{
+          console.log("Se ha creado la receta", response.data._id);
+        })
+        .catch((err)=>console.error(err));       
+
+      },
+      actualizarReceta() { //updateReceta
+
+      if(
+        this.nameReceta == undefined || this.nameReceta == "" ||
+        this.photoReceta == undefined || this.photoReceta == "" ||
+        this.listaIngredientes == undefined || this.listaIngredientes == [] ||
+        this.descReceta == undefined || this.descReceta == ""
+        //this.ingre == undefined || this.ingre == "" ||
+        //this.cant == undefined || this.cant == ""
+      ){
+        return console.log("no llenaste alguno de los" + 
+        "campos obligatorios");
+      }
+        const receta = {
+          nameReceta: this.nameReceta,
+          photoReceta: this.photoReceta,
+          listaIngredientes: this.listaIngredientes,
+          cant: this.cant,
+          ingre: this.ingre,
+          descReceta: this.descReceta,
+        }        
+        updateReceta(this.nameReceta, receta)
+        .then(()=>{
+          console.log("Se ha Actualizado la receta " + this.nameReceta);
+        })
+        .catch((err)=>console.error(err));       
+
+      },
+
+      //*-*-*-*
+      agregarIngredientes() {
+        const ingredientes = {
+          ingre: this.ingre,
+          cant: this.cant,
+        };
+        this.listaIngredientes.push(ingredientes);
+        /*this.ingredients["nameIngre"] = ingredientes["ingre"];
+        this.ingredients["qtyIngre"] = ingredientes["cant"];*/        
+        (this.ingre = ""), (this.cant = "");
+      }
+  }
 };
 </script>
-
-<style scoped>
-.container {
-  max-width: 800px;
-}
-.cuerpo {
-  box-shadow: 2px 2px 5px #999;
-}
-.decorado {
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(10, 53, 241, 0.8)),
-    url("../assets/banner_2.jpg");
-  background-size: cover;
-  background-position: center;
-  height: 90px;
-  color: antiquewhite;
-}
-a {
-  text-decoration: none;
-}
-</style>
